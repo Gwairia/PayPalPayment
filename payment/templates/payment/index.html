@@ -1,0 +1,22 @@
+{% extends 'payment/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <h1>Available Products</h1>
+
+<form method="post" >
+    {% csrf_token %}
+            {% for product in all_products %}
+                <div class="col-lg-4" style="border:solid;width:150px;text-align:center;margin:15px 0">
+                    <h2>{{ product.name }}</h2>
+                    <p>Price ${{ product.price }}</p>
+                    <button name="id" value="{{product.id}}" style="margin-bottom:10px">show details</button>
+                </div>
+            {% endfor %}
+</form>
+        </div>
+    </div>
+
+{% endblock %}
